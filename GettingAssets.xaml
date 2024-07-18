@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="GettingAssets" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="969,2189" sap2010:WorkflowViewState.IdRef="GettingAssets_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="GettingAssets" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="969,2246" sap2010:WorkflowViewState.IdRef="GettingAssets_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -104,7 +104,7 @@
       <AssemblyReference>UiPath.Workflow</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="GettingAssets" sap:VirtualizedContainerService.HintSize="688,2124" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="GettingAssets" sap:VirtualizedContainerService.HintSize="688,2181" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="ui:DatabaseConnection" Name="db_DatabaseConnection" />
       <Variable x:TypeArguments="sd:DataTable" Name="dt_FolderData" />
@@ -133,13 +133,13 @@
         <scg:Dictionary x:TypeArguments="x:String, Argument" />
       </ui:ExecuteNonQuery.Parameters>
     </ui:ExecuteNonQuery>
-    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_FolderData]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="626,1702" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_FolderData]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="626,1759" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="592,1515" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="592,1572" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -151,11 +151,29 @@
                 <OutArgument x:TypeArguments="x:String">[str_FolderId]</OutArgument>
               </Assign.To>
               <Assign.Value>
-                <InArgument x:TypeArguments="x:String">[CurrentRow("FolderId").ToString]</InArgument>
+                <InArgument x:TypeArguments="x:String">[CurrentRow("DisplayName").ToString]</InArgument>
               </Assign.Value>
             </Assign>
             <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="530,117" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[str_FolderId]" />
-            <ui:OrchestratorHttpRequest JSONPayload="{x:Null}" ResponseHeaders="{x:Null}" StatusCode="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Orchestrator HTTP Request" sap:VirtualizedContainerService.HintSize="530,274" sap2010:WorkflowViewState.IdRef="OrchestratorHttpRequest_2" Method="GET" RelativeEndpoint="[&quot;/odata/assets?fid=&quot; + str_FolderId]" Result="[str_Assets]" />
+            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="530,57" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+              <ui:CommentOut.Body>
+                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="416,353" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:OrchestratorHttpRequest JSONPayload="{x:Null}" ResponseHeaders="{x:Null}" StatusCode="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Orchestrator HTTP Request" sap:VirtualizedContainerService.HintSize="354,265" sap2010:WorkflowViewState.IdRef="OrchestratorHttpRequest_2" Method="GET" RelativeEndpoint="[&quot;/odata/assets?fid=&quot; + str_FolderId]" Result="[str_Assets]" />
+                </Sequence>
+              </ui:CommentOut.Body>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:CommentOut>
+            <ui:OrchestratorHttpRequest JSONPayload="{x:Null}" ResponseHeaders="{x:Null}" StatusCode="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Orchestrator HTTP Request" FolderPath="[str_FolderId]" sap:VirtualizedContainerService.HintSize="530,274" sap2010:WorkflowViewState.IdRef="OrchestratorHttpRequest_3" Method="GET" RelativeEndpoint="/odata/Assets" Result="[str_Assets]" />
             <ui:DeserializeJson x:TypeArguments="njl:JObject" JsonSample="{x:Null}" DisplayName="Deserialize JSON" sap:VirtualizedContainerService.HintSize="530,122" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_2" JsonObject="[obj_Assets]" JsonString="[str_Assets]" />
             <ui:ForEach x:TypeArguments="njl:JToken" CurrentIndex="{x:Null}" DisplayName="For Each currentJToken" sap:VirtualizedContainerService.HintSize="530,800" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[obj_Assets(&quot;value&quot;)]">
               <ui:ForEach.Body>
@@ -195,15 +213,9 @@
                     </Assign>
                     <ui:ExecuteNonQuery AffectedRecords="{x:Null}" ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DisplayName="Run command" ExistingDbConnection="[db_DatabaseConnection]" sap:VirtualizedContainerService.HintSize="434,121" sap2010:WorkflowViewState.IdRef="ExecuteNonQuery_3" Sql="Set IDENTITY_INSERT Assets On; INSERT Into Assets (AssetKey, AssetName, AssetId) VALUES (@AssetKey, @AssetName, @AssetId); Set IDENTITY_INSERT Assets OFF;">
                       <ui:ExecuteNonQuery.Parameters>
-                        <InArgument x:TypeArguments="x:String" x:Key="@AssetKey">
-                          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="AssetKey" />
-                        </InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="@AssetName">
-                          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="AssetName" />
-                        </InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="@AssetId">
-                          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="AssetId" />
-                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="@AssetKey">[AssetKey]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="@AssetName">[AssetName]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="@AssetId">[AssetId]</InArgument>
                       </ui:ExecuteNonQuery.Parameters>
                     </ui:ExecuteNonQuery>
                     <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DataTable="[dt_AssetDetails]" DisplayName="Run query" ExistingDbConnection="[db_DatabaseConnection]" sap:VirtualizedContainerService.HintSize="434,112" sap2010:WorkflowViewState.IdRef="ExecuteQuery_2" Sql="Select * from Assets">
